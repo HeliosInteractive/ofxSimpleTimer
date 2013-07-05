@@ -24,7 +24,6 @@ void ofxSimpleTimer::update( )
     if ( bIsRunning == true )
     {
         //calculate
-        //cout << ofGetElapsedTimeMillis() << " > ( " << startTimeMillis << " + " << delayMillis << endl ;
         if( (ofGetElapsedTimeMillis() - startTimeMillis) > delayMillis )
         {
             ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::update() TIMER COMPLETE" ) ; 
@@ -57,9 +56,11 @@ void ofxSimpleTimer::draw( float x , float y )
 
 void ofxSimpleTimer::start( bool _bLoop , bool bForceReset )
 {
+	ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::start() " ) ;
+
     //We don't want to start the timer if it's already running
     bool bStartTimer = !bIsRunning ;
-    
+    ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::stop() " ) ;
     //Unless we specifically want it too
     if ( bForceReset == true )
         bStartTimer = true ;
@@ -70,7 +71,12 @@ void ofxSimpleTimer::start( bool _bLoop , bool bForceReset )
         startTimeMillis = ofGetElapsedTimeMillis() ;
         bLoop = _bLoop ;
         ofLog( OF_LOG_VERBOSE , "starting timer !" ) ;
-        
-        
     }
+}
+
+void ofxSimpleTimer::stop( ) 
+{
+   //We don't want to start the timer if it's already running
+   bIsRunning = false ; 
+   ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::stop() " ) ;
 }
