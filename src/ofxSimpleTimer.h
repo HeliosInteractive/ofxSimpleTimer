@@ -26,7 +26,7 @@ class ofxSimpleTimer {
         
         void start( bool loop , bool bForceReset = false ) ;
         void stop ( ) ; 
-
+		float getNormalizedProgress ( ) ; 
         
         unsigned long startTimeMillis ;
         unsigned long delayMillis ;

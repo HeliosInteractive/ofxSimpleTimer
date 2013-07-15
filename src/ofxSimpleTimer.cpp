@@ -56,7 +56,7 @@ void ofxSimpleTimer::draw( float x , float y )
 
 void ofxSimpleTimer::start( bool _bLoop , bool bForceReset )
 {
-	ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::start() " ) ;
+	//ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::start() " ) ;
 
     //We don't want to start the timer if it's already running
     bool bStartTimer = !bIsRunning ;
@@ -78,5 +78,14 @@ void ofxSimpleTimer::stop( )
 {
    //We don't want to start the timer if it's already running
    bIsRunning = false ; 
-   ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::stop() " ) ;
+   //ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::stop() " ) ;
+}
+
+float ofxSimpleTimer::getNormalizedProgress ( )  
+{
+	if ( !bIsRunning ) return 0.0f ; 
+
+	float nDiff = delayMillis - (ofGetElapsedTimeMillis() - startTimeMillis) ;
+	float percent = (float)nDiff / (float)delayMillis ; 
+	return ( 1.0f - percent ) ; 
 }
