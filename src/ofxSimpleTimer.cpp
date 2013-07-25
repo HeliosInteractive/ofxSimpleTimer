@@ -17,7 +17,10 @@ void ofxSimpleTimer::setup ( unsigned long delayInMillis )
     delayMillis = delayInMillis ;
     bIsRunning = false ;
 }
-
+void ofxSimpleTimer::reset(){
+	startTimeMillis = 0.0f ;
+    bIsRunning = false ;
+}
 void ofxSimpleTimer::update( )
 {
     
