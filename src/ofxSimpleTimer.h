@@ -36,11 +36,9 @@ class ofxSimpleTimer {
         unsigned long delayMillis ;
         bool bIsRunning ;
         bool bLoop ;
-<<<<<<< HEAD
 		bool bIsPaused ;
-=======
+
 		string name ; 
->>>>>>> 12f58735b8e5b4c49461b0d9b81ea560ba200f15
         
         ofEvent<int> TIMER_COMPLETE ; 
     
