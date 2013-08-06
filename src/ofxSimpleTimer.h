@@ -25,6 +25,8 @@ class ofxSimpleTimer {
         void draw ( float x , float y ) ;
         
 		void reset();
+		void togglePause() { } 
+
         void start( bool loop , bool bForceReset = false ) ;
         void stop ( ) ; 
 		float getNormalizedProgress ( ) ; 
