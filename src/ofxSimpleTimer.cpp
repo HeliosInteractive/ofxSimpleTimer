@@ -16,16 +16,20 @@ void ofxSimpleTimer::setup ( unsigned long delayInMillis )
     startTimeMillis = 0.0f ;
     delayMillis = delayInMillis ;
     bIsRunning = false ;
+	bIsPaused = false;
 }
 void ofxSimpleTimer::reset(){
 	startTimeMillis = 0.0f ;
     bIsRunning = false ;
+	bIsPaused = false;
 }
 void ofxSimpleTimer::update( )
 {
     
     if ( bIsRunning == true )
     {
+		if (bIsPaused)
+			startTimeMillis = startTimeMillis + (ofGetElapsedTimeMillis() - startTimeMillis);
         //calculate
         if( (ofGetElapsedTimeMillis() - startTimeMillis) > delayMillis )
         {
@@ -72,6 +76,7 @@ void ofxSimpleTimer::start( bool _bLoop , bool bForceReset )
     {
 	
         bIsRunning = true ;
+		bIsPaused = false;
         startTimeMillis = ofGetElapsedTimeMillis() ;
         bLoop = _bLoop ;
         ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::start() " ) ;
@@ -85,15 +90,25 @@ void ofxSimpleTimer::stop( )
 		ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::stop() " ) ;
 	
 	bIsRunning = false ; 
+	bIsPaused = false;
 
 
    
+}
+void ofxSimpleTimer::togglePause(){
+	if (bIsRunning)
+		bIsPaused = !bIsPaused;
+
 }
 
 float ofxSimpleTimer::getNormalizedProgress ( )  
 {
 	if ( !bIsRunning ) return 0.0f ; 
 
+	if ( bIsPaused){
+		
+		startTimeMillis += (ofGetElapsedTimeMillis() - startTimeMillis);
+	}
 	float nDiff = delayMillis - (ofGetElapsedTimeMillis() - startTimeMillis) ;
 	float percent = (float)nDiff / (float)delayMillis ; 
 	return ( 1.0f - percent ) ; 

@@ -27,12 +27,14 @@ class ofxSimpleTimer {
 		void reset();
         void start( bool loop , bool bForceReset = false ) ;
         void stop ( ) ; 
+		void togglePause ();
 		float getNormalizedProgress ( ) ; 
         
         unsigned long startTimeMillis ;
         unsigned long delayMillis ;
         bool bIsRunning ;
         bool bLoop ;
+		bool bIsPaused ;
         
         ofEvent<int> TIMER_COMPLETE ; 
     
