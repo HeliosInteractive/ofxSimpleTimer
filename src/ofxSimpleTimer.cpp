@@ -30,7 +30,7 @@ void ofxSimpleTimer::update( )
     if ( bIsRunning == true )
     {
 		if (bIsPaused)
-			startTimeMillis = startTimeMillis + (ofGetElapsedTimeMillis() - startTimeMillis);
+			startTimeMillis = ofGetElapsedTimeMillis() - pauseTimeOffset;
         //calculate
         if( (ofGetElapsedTimeMillis() - startTimeMillis) > delayMillis )
         {
@@ -97,19 +97,24 @@ void ofxSimpleTimer::stop( )
    
 }
 void ofxSimpleTimer::togglePause(){
+	cout << "is timer running? " << bIsRunning << ":" << bIsPaused << endl;
 	if (bIsRunning)
 		bIsPaused = !bIsPaused;
 
+	if (bIsPaused)
+		pauseTimeOffset = ofGetElapsedTimeMillis() - startTimeMillis;
+
+	if (!bIsPaused)
+		startTimeMillis = ofGetElapsedTimeMillis() - pauseTimeOffset;
+
+	cout << "is timer running? " << bIsRunning << ":" << bIsPaused << endl;
+	cout << "timing: " << ofGetElapsedTimeMillis() << ":" << startTimeMillis << endl;
 }
 
 float ofxSimpleTimer::getNormalizedProgress ( )  
 {
 	if ( !bIsRunning ) return 0.0f ; 
 
-	if ( bIsPaused){
-		
-		startTimeMillis += (ofGetElapsedTimeMillis() - startTimeMillis);
-	}
 	float nDiff = delayMillis - (ofGetElapsedTimeMillis() - startTimeMillis) ;
 	float percent = (float)nDiff / (float)delayMillis ; 
 	return ( 1.0f - percent ) ; 

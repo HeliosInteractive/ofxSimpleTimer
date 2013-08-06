@@ -24,16 +24,18 @@ class ofxSimpleTimer {
     
         void draw ( float x , float y ) ;
         
-		void reset();
-		void togglePause() { } 
+		void reset(); 
+		void togglePause ();
 
         void start( bool loop , bool bForceReset = false ) ;
         void stop ( ) ; 
-		void togglePause ();
+
 		float getNormalizedProgress ( ) ; 
         
         unsigned long startTimeMillis ;
         unsigned long delayMillis ;
+		unsigned long pauseTimeOffset ;
+
         bool bIsRunning ;
         bool bLoop ;
 		bool bIsPaused ;
