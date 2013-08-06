@@ -19,12 +19,14 @@ class ofxSimpleTimer {
         ofxSimpleTimer() { }
         ~ofxSimpleTimer( ) { }
         
-        void setup ( unsigned long delayInMillis ) ;
+        void setup ( unsigned long delayInMillis , string _name = "noName" ) ;
         void update( ) ;
     
         void draw ( float x , float y ) ;
         
 		void reset();
+		void togglePause() { } 
+
         void start( bool loop , bool bForceReset = false ) ;
         void stop ( ) ; 
 		void togglePause ();
@@ -34,7 +36,11 @@ class ofxSimpleTimer {
         unsigned long delayMillis ;
         bool bIsRunning ;
         bool bLoop ;
+<<<<<<< HEAD
 		bool bIsPaused ;
+=======
+		string name ; 
+>>>>>>> 12f58735b8e5b4c49461b0d9b81ea560ba200f15
         
         ofEvent<int> TIMER_COMPLETE ; 
     

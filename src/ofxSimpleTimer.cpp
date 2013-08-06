@@ -11,12 +11,16 @@
 
 #include "ofxSimpleTimer.h"
 
-void ofxSimpleTimer::setup ( unsigned long delayInMillis )
+void ofxSimpleTimer::setup ( unsigned long delayInMillis, string _name )
 {
     startTimeMillis = 0.0f ;
     delayMillis = delayInMillis ;
     bIsRunning = false ;
+<<<<<<< HEAD
 	bIsPaused = false;
+=======
+	name = _name ; 
+>>>>>>> 12f58735b8e5b4c49461b0d9b81ea560ba200f15
 }
 void ofxSimpleTimer::reset(){
 	startTimeMillis = 0.0f ;
@@ -25,7 +29,6 @@ void ofxSimpleTimer::reset(){
 }
 void ofxSimpleTimer::update( )
 {
-    
     if ( bIsRunning == true )
     {
 		if (bIsPaused)
@@ -33,7 +36,7 @@ void ofxSimpleTimer::update( )
         //calculate
         if( (ofGetElapsedTimeMillis() - startTimeMillis) > delayMillis )
         {
-            ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::update() TIMER COMPLETE" ) ; 
+            ofLog( OF_LOG_VERBOSE , name + " ofxSimpleTimer::update() TIMER COMPLETE" ) ; 
             bIsRunning = false ;
             if ( bLoop == true )
                 start( bLoop ) ;
@@ -79,7 +82,7 @@ void ofxSimpleTimer::start( bool _bLoop , bool bForceReset )
 		bIsPaused = false;
         startTimeMillis = ofGetElapsedTimeMillis() ;
         bLoop = _bLoop ;
-        ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::start() " ) ;
+        ofLog( OF_LOG_VERBOSE , name + " ofxSimpleTimer::start() " ) ;
     }
 }
 
