@@ -11,13 +11,14 @@
 
 #include "ofxSimpleTimer.h"
 
-void ofxSimpleTimer::setup ( unsigned long delayInMillis, string _name )
+void ofxSimpleTimer::setup ( unsigned long delayInMillis, string _name , int _eventId )
 {
     startTimeMillis = 0.0f ;
     delayMillis = delayInMillis ;
     bIsRunning = false ;
 	bIsPaused = false;
 	name = _name ; 
+	eventId = _eventId ;
 
 }
 void ofxSimpleTimer::reset(){
@@ -34,7 +35,7 @@ void ofxSimpleTimer::update( )
         //calculate
         if( (ofGetElapsedTimeMillis() - startTimeMillis) > delayMillis )
         {
-            ofLog( OF_LOG_VERBOSE , name + " ofxSimpleTimer::update() TIMER COMPLETE" ) ; 
+            //ofLog( OF_LOG_VERBOSE , name + " ofxSimpleTimer::update() TIMER COMPLETE" ) ; 
             bIsRunning = false ;
             if ( bLoop == true )
                 start( bLoop ) ;
@@ -80,15 +81,15 @@ void ofxSimpleTimer::start( bool _bLoop , bool bForceReset )
 		bIsPaused = false;
         startTimeMillis = ofGetElapsedTimeMillis() ;
         bLoop = _bLoop ;
-        ofLog( OF_LOG_VERBOSE , name + " ofxSimpleTimer::start() " ) ;
+        //ofLog( OF_LOG_VERBOSE , name + " ofxSimpleTimer::start() " ) ;
     }
 }
 
 void ofxSimpleTimer::stop( ) 
 {
    //We don't want to start the timer if it's already running
-   if ( bIsRunning == true ) 
-		ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::stop() " ) ;
+   //if ( bIsRunning == true ) 
+	//	ofLog( OF_LOG_VERBOSE , "ofxSimpleTimer::stop() " ) ;
 	
 	bIsRunning = false ; 
 	bIsPaused = false;
