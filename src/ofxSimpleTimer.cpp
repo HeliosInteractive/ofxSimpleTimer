@@ -81,6 +81,8 @@ void ofxSimpleTimer::start( bool _bLoop , bool bForceReset )
 		bIsPaused = false;
         startTimeMillis = ofGetElapsedTimeMillis() ;
         bLoop = _bLoop ;
+        int args = 18 ;
+        ofNotifyEvent( TIMER_STARTED , args ) ;
         //ofLog( OF_LOG_VERBOSE , name + " ofxSimpleTimer::start() " ) ;
     }
 }
@@ -102,8 +104,11 @@ void ofxSimpleTimer::togglePause(){
 	if (bIsRunning)
 		bIsPaused = !bIsPaused;
 
-	if (bIsPaused)
+	if (bIsPaused){
 		pauseTimeOffset = ofGetElapsedTimeMillis() - startTimeMillis;
+        int args = 18 ;
+         ofNotifyEvent( TIMER_PAUSED , args ) ;
+    }
 
 	if (!bIsPaused)
 		startTimeMillis = ofGetElapsedTimeMillis() - pauseTimeOffset;

@@ -43,6 +43,8 @@ class ofxSimpleTimer {
 		string name ; 
         
 		int eventId ; 
-        ofEvent<int> TIMER_COMPLETE ; 
+        ofEvent<int> TIMER_COMPLETE ;
+        ofEvent<int> TIMER_STARTED ;
+        ofEvent<int> TIMER_PAUSED ;
 };
 
