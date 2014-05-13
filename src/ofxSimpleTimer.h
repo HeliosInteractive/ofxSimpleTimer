@@ -16,7 +16,10 @@
 class ofxSimpleTimer {
     
     public:
-        ofxSimpleTimer() { }
+		ofxSimpleTimer() {
+			bIsRunning = false ;
+			bIsPaused = false;
+		}
         ~ofxSimpleTimer( ) { }
         
         void setup ( unsigned long delayInMillis , string _name = "noName" , int eventId = 18 ) ;
