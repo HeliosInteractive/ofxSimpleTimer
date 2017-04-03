@@ -19,7 +19,6 @@ void ofApp::setup()
     
     ofAddListener( timer1.TIMER_STARTED , this, &ofApp::timer1StartedHandler ) ;
     ofAddListener( timer2.TIMER_STARTED , this, &ofApp::timer2StartedHandler ) ;
-    
 }
 
 //--------------------------------------------------------------
