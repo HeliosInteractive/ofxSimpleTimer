@@ -123,3 +123,12 @@ float ofxSimpleTimer::getNormalizedProgress ( )
 	float percent = (float)nDiff / (float)delayMillis ; 
 	return ( 1.0f - percent ) ; 
 }
+
+float ofxSimpleTimer::getTimeLeft(){
+    float timeLeft = 0;
+    if ( bIsRunning )
+    {
+        timeLeft = delayMillis - (ofGetElapsedTimeMillis() - startTimeMillis) ;
+    }
+    return timeLeft;
+}

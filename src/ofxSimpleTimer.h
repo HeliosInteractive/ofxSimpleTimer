@@ -33,8 +33,9 @@ class ofxSimpleTimer {
         void start( bool loop , bool bForceReset = false ) ;
         void stop ( ) ; 
 
-		float getNormalizedProgress ( ) ; 
-        
+		float getNormalizedProgress ( ) ;
+        float getTimeLeft();
+    
         unsigned long startTimeMillis ;
         unsigned long delayMillis ;
 		unsigned long pauseTimeOffset ;
